@@ -1,0 +1,57 @@
+This README is a long one, so bear with me.
+
+TO RUN:
+make
+
+SUMMARY:
+this is a Turn Based strategy game with no goal in mind.  A simple game board gives the player a visualization of the game space.  You're able to have Miners mine gold from Gold Mines and deposit them into Town Halls.  Inspectors go to each Gold Mine and report on how much gold is left.  Soldiers are able to kill Inspectors, Miners, and other Soldiers.  Town Halls are upgraded once 50 gold is reached, and Gold Mines are degraded once 50 gold has been mined.  Game objects (Miners, Inspectors, Soldiers, Town Halls, Gold Mines) are able to be created during run-time.  If attacked, persons run away from the attacker. Once killed, the symbol disappears from the game board.
+
+COMMANDS:
+Move: 'm' int 'ID' int 'x' int 'y'
+      	moves the person with ID# to location(x,y)
+
+Stop: 's' int 'ID'
+      	the person with ID stops whatever they were doing
+
+Mine: 'w' int 'ID1' int 'ID2' int 'ID3'
+      	commands a miner with ID1 to start mining at Gold Mine with ID2 and deposit the gold at Town hall with ID3
+
+Attack: 'a' int 'ID1' int 'ID2'
+	commands a soldier with ID1 to attack person with ID2
+
+Inspect: 'i' int 'ID1'
+	commands the inspector to start inspecting at Gold Mine with ID.  Once started, the inspector will continue to the next closest Gold Mine and report 
+
+Go: 'g'
+	advance the game one time step
+
+Run: 'r'
+	Advance to the next event.  If no event, advance 5 time steps
+
+Show Status: 'l'
+     	outputs the status of all current game objects
+
+Create Game Object: 'n' char 'type' int 'ID' double 'x' double 'y'
+       	create a game object of type 'type' with ID 'ID' at location(x,y)
+
+Save Game: 'S' string 'filename'
+     	save the current game to a file named 'filename'
+
+Load Game: 'R' string 'filename'
+     	load 'filename' as the current game
+
+Quit: q
+
+GAME OBJECTS:
+Miner:  able to mine gold at Gold Mines and deposit them at Town Halls, once mining the miner will continue to mine and deposit at a Town Hall until the mine runs empty.  Symbol on the game board is 'MID#'.  Able to be killed by other persons, but will run in the opposite direction if attacked.  Once killed the symbol on the board disappears.
+
+Soldier:  able to attack other persons within range, including other Soldiers.  Symbol on the game board is 'SID#'.  Once killed the symbol on the board disappears.
+
+Inspector:  able to inspect Gold Mines and report on the amount of gold taken out since the last inspection, once inspecting the inspector will continue to the next closest Gold Mine and report on the amount of gold taken out since last inspection, once all Gold Mines have been inspected the inspector will return to its original location.  Symbol on the game board is 'IID#'.  Able to be killed by other persons, but will run in the opposite direction if attacked.  Once killed the symbol on the board disappears.
+
+Gold Mine:  contains a certain amount of gold that a miner is able to mine.  Symbol on the game board is 'GID#', but is degraded to 'gID#' once its gold has been diminished to 50 or under.  
+
+Town Hall: miners are able to deposit gold into town halls.  Symbol on the game board is 'tID#', but is upgraded to 'TID#' once its gold has been increased to 50 or above.     
+      
+
+     
